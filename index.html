@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pet Memorial</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    #content {
+      margin: 20px;
+    }
+    
+    #content p {
+      text-align: justify;
+    }
+    
+    #slideshow {
+      width: 100%;
+      max-width: 500px;
+      margin: 20px auto;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    #slideshow img {
+      width: 100%;
+      height: auto;
+      display: none;
+      cursor: pointer;
+    }
+    
+    #slideshow .active img {
+      display: block;
+    }
+    
+    .caption {
+  display: none;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.slide.active .caption {
+  display: block;
+}
+    
+    #buttons {
+      text-align: center;
+      margin-top: 10px;
+    }
+    
+    .button {
+      display: inline-block;
+      background-color: #333;
+      color: #fff;
+      padding: 5px;
+      margin: 0 5px;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+    
+    .button:hover {
+      opacity: 1;
+    }
+    
+    @keyframes flash {
+      0% { opacity: 0; }
+      50% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+    
+    .flash-animation {
+      animation: flash 1s;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>In Loving Memory of Jimmy &#128147 &#128054</h1>
+  </header>
+  
+  <div id="content">
+    <p style="max-width: 800px; margin: 0 auto; text-indent: 20px;">
+        <strong>“Dogs are not our whole life, but they make our lives whole.”</strong>
+            <br><em>– Roger Caras</em>
+            </p>
+            <br><br>
+            <p style="max-width: 800px; margin: 0 auto; text-indent: 20px;">
+            Jimmy, a loyal and cherished member of the family, has crossed the rainbow bridge, leaving behind a legacy of love and joyful memories. With heavy hearts, we celebrate the life of this extraordinary canine companion, who brought immense happiness to all who knew him.
+
+From birth, Jimmy embarked on a remarkable journey, leaving pawprints on the hearts of those fortunate enough to have shared in his boundless affection and playful spirit. He was a shining example of unconditional love, loyalty, and joy, a true blessing to his adoring mom and dad.
+
+One of Jimmy's greatest joys in life was going on car rides, his furry face filled with pure bliss as the wind tousled his fur. Whether it was a short trip to the park or an adventure to a new destination, the thrill of the open road brought out his infectious enthusiasm and wagging tail.
+
+But it wasn't just car rides that ignited Jimmy's zest for life; he had a deep passion for boat rides as well. Gliding through the water, his eyes sparkling with excitement, he embraced every moment of aquatic exploration. Those fortunate enough to have witnessed him basking in the sun's warmth will forever carry that image of pure contentment.
+
+Within the household, Jimmy found joy and companionship in the company of his feline siblings. They frolicked together, their playful antics filling the home with endless amusement. His ability to bridge the gap between different species showcased his gentle nature and his gift for fostering harmony in the family.
+
+Yet, of all the joys Jimmy experienced, nothing compared to the simple pleasure of cuddling with his mom and dad. His warm presence, nestled against their sides, brought comfort and solace during life's highs and lows. In their embrace, Jimmy found security, and in return, he showered them with unwavering devotion.
+
+As we bid farewell to this extraordinary soul, let us remember the lessons Jimmy taught us. He taught us to find joy in the simplest of things, to embrace every adventure with an open heart, and to love unconditionally. The memories we shared with him will forever be etched in our minds, a testament to the incredible bond we were privileged to have with such a remarkable creature.
+
+Jimmy will be deeply missed but forever cherished. May he find eternal happiness and endless car rides and boat rides in the boundless fields of the doggy afterlife. Rest in peace, dear friend. Your love will forever be in our hearts.
+
+
+    </p>
+    
+    <div id="slideshow">
+      <div class="slide active">
+        <img src="images\jimmy1.png">
+        <div class="caption">I loved to party...that's why they call me El Perro Loco!</div>
+      </div>
+      <div class="slide">
+        <img src="images\jimmy2.png">
+        <div class="caption">I'm so handsome that I have my own clothing line &#128515</div>
+      </div>
+      <div class="slide">
+        <img src="images\jimmy3.png">
+        <div class="caption">I had a lot of friends - some are furrier than others...</div>
+      </div>
+
+      <div class="slide">
+        <img src="images\jimmy4.png">
+        <div class="caption">A warm blanket feels like home.</div>
+      </div>
+
+      <div class="slide">
+        <img src="images\jimmy5.png">
+        <div class="caption">There's nothing better than a long car ride. I got to see the world by land and sea!</div>
+      </div>
+
+      <div class="slide">
+        <img src="images\jimmy6.png">
+        <div class="caption">After playing with friends, cuddling on the couch is a good way to recharge the batteries.</div>
+      </div>
+
+      <div class="slide">
+        <img src="images\jimmy7.png">
+        <div class="caption">I look very sophisticated with mom's glasses!</div>
+      </div>
+      <!-- Add more slides as needed -->
+    </div>
+    
+    <div id="buttons">
+      <div id="pause-button" class="button">
+        <i class="fas fa-pause"></i> Pause
+      </div>
+      <div id="play-button" class="button">
+        <i class="fas fa-play"></i> Play
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    const slides = document.querySelectorAll('#slideshow .slide');
+    let currentSlideIndex = 0;
+    let slideshowInterval;
+    let isPaused = false;
+  
+    const toggleSlideshow = () => {
+      if (slideshowInterval) {
+        clearInterval(slideshowInterval);
+        slideshowInterval = null;
+      } else {
+        slideshowInterval = setInterval(() => {
+          if (!isPaused) {
+            slides[currentSlideIndex].classList.remove('active');
+            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+            slides[currentSlideIndex].classList.add('active');
+          }
+        }, 7000);
+      }
+    };
+    
+    slides.forEach((slide, index) => {
+      slide.addEventListener('click', () => {
+        slides[currentSlideIndex].classList.remove('active');
+        currentSlideIndex = index;
+        slides[currentSlideIndex].classList.add('active');
+        toggleSlideshow();
+        flashButton(isPaused ? playButton : pauseButton);
+        isPaused = !isPaused;
+      });
+    });
+    
+    const pauseButton = document.getElementById('pause-button');
+    const playButton = document.getElementById('play-button');
+    const buttons = document.querySelectorAll('.button');
+    
+    const flashButton = (button) => {
+      button.classList.add('flash-animation');
+      setTimeout(() => {
+        button.classList.remove('flash-animation');
+      }, 1000);
+    };
+    
+    pauseButton.addEventListener('click', () => {
+      flashButton(pauseButton);
+      toggleSlideshow();
+      isPaused = true;
+    });
+    
+    playButton.addEventListener('click', () => {
+      flashButton(playButton);
+      toggleSlideshow();
+      isPaused = false;
+    });
+    
+    toggleSlideshow();
+  </script>
+</body>
+</html>
